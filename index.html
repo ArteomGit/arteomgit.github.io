@@ -6,9 +6,13 @@
   <title>Arteom S.</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 0;
+      padding: 0 20px;
       font-family: 'Roboto Mono', monospace;
       color: #333;
       background-color: #f9f9f9;
@@ -18,7 +22,7 @@
       text-align: center;
       padding-top: 60px;
       min-height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -62,6 +66,14 @@
       font-family: 'Roboto Mono', monospace;
       font-size: 1.1rem;
       transition: opacity 1s ease;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .overlay-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .typewriter::after {
@@ -75,7 +87,7 @@
 
     .fade-out {
       animation: fadeout 1s ease forwards;
-      animation-delay: 3s;
+      animation-delay: 0s;
     }
 
     @keyframes fadeout {
@@ -84,8 +96,10 @@
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <span id="typewriter" class="typewriter"></span>
+  <div class="overlay" id="overlay">
+    <div class="overlay-content">
+      <span id="typewriter" class="typewriter"></span>
+    </div>
     <audio id="typeSound" src="https://cdn.pixabay.com/download/audio/2023/03/03/audio_7a5a1ce2f8.mp3?filename=mechanical-keyboard-typing-112221.mp3" preload="auto"></audio>
   </div>
 
@@ -101,6 +115,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const text = "Arteom's Loading...";
       const el = document.getElementById('typewriter');
+      const overlay = document.getElementById('overlay');
       const typeSound = document.getElementById('typeSound');
       let i = 0;
 
@@ -108,13 +123,17 @@
         if (i < text.length) {
           el.textContent += text.charAt(i);
           if (![' ', '.', '''].includes(text.charAt(i))) {
-            typeSound.currentTime = 0;
-            typeSound.play();
+            try {
+              typeSound.currentTime = 0;
+              typeSound.play();
+            } catch (err) {
+              // Some browsers require interaction first
+            }
           }
           i++;
           setTimeout(type, 75);
         } else {
-          document.querySelector('.overlay').classList.add('fade-out');
+          overlay.classList.add('fade-out');
         }
       }
 
