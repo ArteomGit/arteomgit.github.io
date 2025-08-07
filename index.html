@@ -7,47 +7,79 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
     body {
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-  font-family: 'Roboto Mono', monospace;
-  color: #333;
-  padding-top: 60px; /* this moves everything closer to top */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto Mono', monospace;
+      color: #333;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 60px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
 
-h1 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 4rem;
-  margin-bottom: 0.5rem;
-}
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+    }
 
-p {
-  font-size: 1rem;
-  margin: 0.2rem 0;
-}
+    p {
+      font-size: 1rem;
+      margin: 0.2rem 0;
+    }
 
-.quote {
-  margin-top: 2rem;
-  max-width: 500px;
-}
+    .quote {
+      margin-top: 2rem;
+      max-width: 500px;
+    }
 
-.quote p {
-  font-size: 0.9rem;
-}
+    .quote p {
+      font-size: 0.9rem;
+    }
 
-.scripture-ref {
-  font-weight: bold;
-  text-decoration: underline;
-  font-size: 0.85rem;
-}
+    .scripture-ref {
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: 0.85rem;
+    }
+
+    /* Overlay styling */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: white;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      transition: opacity 2s ease;
+      pointer-events: none;
+    }
+
+    .overlay.fade-out {
+      opacity: 0;
+    }
   </style>
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelector('.overlay').classList.add('fade-out');
+    });
+  </script>
 </head>
 <body>
+  <div class="overlay">Loading...</div>
+
   <h1>Arteom S.</h1>
   <p>The domicile of Arteom. Contact directly for more information.</p>
   <div class="quote">
