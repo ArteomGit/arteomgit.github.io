@@ -29,7 +29,7 @@
     h1 {
       font-family: 'Outfit', sans-serif;
       font-size: 4rem;
-      margin-bottom: 0.5rem;
+      margin: 1rem 0 0.5rem;
     }
 
     p {
@@ -94,6 +94,19 @@
     @keyframes fadeout {
       to { opacity: 0; visibility: hidden; }
     }
+
+    .sketch-container {
+      max-width: 150px;
+      margin-bottom: 1rem;
+      animation: drawSketch 2s ease-in-out forwards;
+      filter: grayscale(100%);
+      opacity: 0;
+    }
+
+    @keyframes drawSketch {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
@@ -101,6 +114,10 @@
     <div class="overlay-content">
       <span id="typewriter" class="typewriter"></span>
     </div>
+  </div>
+
+  <div class="sketch-container">
+    <img src="sketch.png" alt="Arteom Sketch" style="width: 100%; border-radius: 50%;">
   </div>
 
   <h1>Arteom S.</h1>
@@ -113,10 +130,11 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const text = "Arteom's Loading...";
+      const text = "arteom's loading...";
       const el = document.getElementById('typewriter');
       const overlay = document.getElementById('overlay');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
+
       let i = 0;
 
       function type() {
@@ -125,13 +143,14 @@
           i++;
           setTimeout(type, 75);
         } else {
-          overlay.classList.add('fade-out');
-          // Switch theme color to match light mode after fade
-          themeMeta.setAttribute('content', '#f9f9f9');
+          setTimeout(() => {
+            overlay.classList.add('fade-out');
+            themeMeta.setAttribute('content', '#f9f9f9');
+          }, 500);
         }
       }
 
-      setTimeout(type, 2000); // Wait 2 seconds before typing starts
+      setTimeout(type, 2000);
     });
   </script>
 </body>
