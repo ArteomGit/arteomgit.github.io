@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arteom S.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
-  <meta name="theme-color" content="#000000" id="theme-color-meta">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet"/>
+  <meta name="theme-color" content="#000000" id="theme-color-meta" />
   <style>
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
       padding: 0 20px;
@@ -25,33 +24,27 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
     h1 {
       font-family: 'Outfit', sans-serif;
       font-size: 4rem;
       margin: 1rem 0 0.5rem;
     }
-
     p {
       font-size: 1rem;
       margin: 0.2rem 0;
     }
-
     .quote {
       margin-top: 2rem;
       max-width: 500px;
     }
-
     .quote p {
       font-size: 0.9rem;
     }
-
     .scripture-ref {
       font-weight: bold;
       text-decoration: underline;
       font-size: 0.85rem;
     }
-
     .overlay {
       position: fixed;
       top: 0;
@@ -70,42 +63,23 @@
       text-align: center;
       padding: 0 20px;
     }
-
     .overlay-content {
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
     .typewriter::after {
       content: '|';
       animation: blink 0.7s steps(1) infinite;
     }
-
     @keyframes blink {
       50% { opacity: 0; }
     }
-
     .fade-out {
       animation: fadeout 1s ease forwards;
-      animation-delay: 0s;
     }
-
     @keyframes fadeout {
       to { opacity: 0; visibility: hidden; }
-    }
-
-    .sketch-container {
-      max-width: 150px;
-      margin-bottom: 1rem;
-      animation: drawSketch 2s ease-in-out forwards;
-      filter: grayscale(100%);
-      opacity: 0;
-    }
-
-    @keyframes drawSketch {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
@@ -116,9 +90,7 @@
     </div>
   </div>
 
-  <div class="sketch-container">
-    <img src="sketch.png" alt="Arteom Sketch" style="width: 100%; border-radius: 50%;">
-  </div>
+  <img src="sketch.png" alt="Arteom Sketch" style="width: 100%; max-width: 250px; margin-bottom: 1rem;" />
 
   <h1>Arteom S.</h1>
   <p>The domicile of Arteom. Contact directly for more information.</p>
@@ -134,9 +106,7 @@
       const el = document.getElementById('typewriter');
       const overlay = document.getElementById('overlay');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
-
       let i = 0;
-
       function type() {
         if (i < text.length) {
           el.textContent += text.charAt(i);
@@ -149,7 +119,6 @@
           }, 500);
         }
       }
-
       setTimeout(type, 2000);
     });
   </script>
