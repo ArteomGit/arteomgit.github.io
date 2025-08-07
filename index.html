@@ -58,10 +58,10 @@
       z-index: 999;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       font-family: 'Roboto Mono', monospace;
-      font-size: 1.5rem;
-      padding-top: 60px;
+      font-size: 1.1rem;
+      transition: opacity 1s ease;
     }
 
     .typewriter::after {
@@ -82,15 +82,35 @@
       to { opacity: 0; visibility: hidden; }
     }
   </style>
+</head>
+<body>
+  <div class="overlay">
+    <span id="typewriter" class="typewriter"></span>
+    <audio id="typeSound" src="https://cdn.pixabay.com/download/audio/2023/03/03/audio_7a5a1ce2f8.mp3?filename=mechanical-keyboard-typing-112221.mp3" preload="auto"></audio>
+  </div>
+
+  <h1>Arteom S.</h1>
+  <p>The domicile of Arteom. Contact directly for more information.</p>
+  <div class="quote">
+    <p>WORDS OF WISDOM:</p>
+    <p>Do not say, “Why were the old days better than these?” For it is not wise to ask such questions.</p>
+    <p class="scripture-ref">Ecclesiastes 7:10</p>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const text = "Arteom's Loading...";
       const el = document.getElementById('typewriter');
+      const typeSound = document.getElementById('typeSound');
       let i = 0;
 
       function type() {
         if (i < text.length) {
           el.textContent += text.charAt(i);
+          if (![' ', '.', '''].includes(text.charAt(i))) {
+            typeSound.currentTime = 0;
+            typeSound.play();
+          }
           i++;
           setTimeout(type, 75);
         } else {
@@ -101,18 +121,5 @@
       setTimeout(type, 2000); // Wait 2 seconds before typing
     });
   </script>
-</head>
-<body>
-  <div class="overlay">
-    <span id="typewriter" class="typewriter"></span>
-  </div>
-
-  <h1>Arteom S.</h1>
-  <p>The domicile of Arteom. Contact directly for more information.</p>
-  <div class="quote">
-    <p>WORDS OF WISDOM:</p>
-    <p>Do not say, “Why were the old days better than these?” For it is not wise to ask such questions.</p>
-    <p class="scripture-ref">Ecclesiastes 7:10</p>
-  </div>
 </body>
 </html>
