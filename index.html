@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arteom S.</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#000000" id="theme-color-meta">
   <style>
     * {
       box-sizing: border-box;
@@ -100,7 +101,6 @@
     <div class="overlay-content">
       <span id="typewriter" class="typewriter"></span>
     </div>
-    <audio id="typeSound" src="https://cdn.pixabay.com/download/audio/2023/03/03/audio_7a5a1ce2f8.mp3?filename=mechanical-keyboard-typing-112221.mp3" preload="auto"></audio>
   </div>
 
   <h1>Arteom S.</h1>
@@ -116,28 +116,22 @@
       const text = "Arteom's Loading...";
       const el = document.getElementById('typewriter');
       const overlay = document.getElementById('overlay');
-      const typeSound = document.getElementById('typeSound');
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
       let i = 0;
 
       function type() {
         if (i < text.length) {
           el.textContent += text.charAt(i);
-          if (![' ', '.', '''].includes(text.charAt(i))) {
-            try {
-              typeSound.currentTime = 0;
-              typeSound.play();
-            } catch (err) {
-              // Some browsers require interaction first
-            }
-          }
           i++;
           setTimeout(type, 75);
         } else {
           overlay.classList.add('fade-out');
+          // Switch theme color to match light mode after fade
+          themeMeta.setAttribute('content', '#f9f9f9');
         }
       }
 
-      setTimeout(type, 2000); // Wait 2 seconds before typing
+      setTimeout(type, 2000); // Wait 2 seconds before typing starts
     });
   </script>
 </body>
