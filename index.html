@@ -131,7 +131,9 @@
 <div id="fast-flipboard" style="
   font-family: 'Roboto Mono', monospace;
   color: #ddd;
+  width: 100%;
   max-width: 720px;
+  box-sizing: border-box;
   margin: 60px auto;
   padding: 30px 20px;
   text-align: center;
@@ -152,9 +154,9 @@
     <div style="font-size: 0.7rem; letter-spacing: 3px; color:#888; margin-bottom: 10px;">
       TIME WITHOUT FOOD
     </div>
-    <div id="fb-elapsed" style="display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap;"></div>
-    <div style="display:flex; justify-content:center; gap: 0; margin-top:6px; font-size:0.6rem; letter-spacing:1px; color:#666;">
-      <span style="width:100px;">DAYS</span><span style="width:100px;">HOURS</span><span style="width:100px;">MINS</span><span style="width:100px;">SECS</span>
+    <div id="fb-elapsed" style="display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px;"></div>
+    <div style="margin-top:6px; font-size:0.6rem; letter-spacing:1px; color:#666;">
+      DAYS &nbsp;&nbsp;&nbsp; HOURS &nbsp;&nbsp;&nbsp; MINS &nbsp;&nbsp;&nbsp; SECS
     </div>
   </div>
 
@@ -165,9 +167,9 @@
     <div style="font-size: 0.7rem; letter-spacing: 3px; color:#888; margin-bottom: 10px;">
       TIME REMAINING
     </div>
-    <div id="fb-countdown" style="display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap;"></div>
-    <div style="display:flex; justify-content:center; gap: 0; margin-top:6px; font-size:0.6rem; letter-spacing:1px; color:#666;">
-      <span style="width:100px;">DAYS</span><span style="width:100px;">HOURS</span><span style="width:100px;">MINS</span><span style="width:100px;">SECS</span>
+    <div id="fb-countdown" style="display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px;"></div>
+    <div style="margin-top:6px; font-size:0.6rem; letter-spacing:1px; color:#666;">
+      DAYS &nbsp;&nbsp;&nbsp; HOURS &nbsp;&nbsp;&nbsp; MINS &nbsp;&nbsp;&nbsp; SECS
     </div>
   </div>
 
@@ -267,6 +269,23 @@
   @keyframes fbTickerScroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-100%); }
+  }
+
+  /* MOBILE: shrink everything so 8 flaps + colons fit without scrolling */
+  @media (max-width: 480px) {
+    #fast-flipboard { padding: 20px 10px !important; }
+    #fast-flipboard .flap-box { width: 24px; height: 34px; }
+    #fast-flipboard .flap-face { font-size: 1rem; }
+    #fast-flipboard .flap-group { gap: 2px; }
+    #fast-flipboard .flap-colon { height: 34px; gap: 4px; margin: 0 1px; }
+    #fast-flipboard .flap-colon span { width: 3px; height: 3px; }
+    #fb-elapsed, #fb-countdown { gap: 3px !important; }
+    #fast-flipboard #fb-ticker { font-size: 0.65rem; }
+  }
+
+  @media (max-width: 360px) {
+    #fast-flipboard .flap-box { width: 20px; height: 30px; }
+    #fast-flipboard .flap-face { font-size: 0.85rem; }
   }
 </style>
 
