@@ -122,123 +122,270 @@
       setTimeout(type, 2000);
     });
   </script>
- <!-- ============================================================
-     FAST TRACKER WIDGET — drop this block right before </body>
-     Uses the same fonts/colors as arteoms.com:
-       - Outfit (headline)
-       - Roboto Mono (body/numbers)
-       - #f9f9f9 bg / #333 text
-     Make sure this line is already in your <head> (it already is
-     on your site, so no change needed there):
-       <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet"/>
+<!-- ============================================================
+     FAST TRACKER — AIRPORT SPLIT-FLAP EDITION
+     Drop this block right before </body>. Uses your existing
+     Google Fonts link (Roboto Mono) already in <head> — no new
+     font imports needed.
      ============================================================ -->
-<div id="fast-tracker" style="
+<div id="fast-flipboard" style="
   font-family: 'Roboto Mono', monospace;
-  color: #333;
-  max-width: 640px;
+  color: #ddd;
+  max-width: 720px;
   margin: 60px auto;
-  padding: 0 20px;
+  padding: 30px 20px;
   text-align: center;
+  background: #0d0d0d;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
 ">
 
-  <div style="font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 6px; color:#777;">
+  <div style="font-size: 0.75rem; letter-spacing: 4px; color:#999; margin-bottom: 4px;">
     FASTING TRACKER
   </div>
-
-  <div style="font-family:'Outfit', sans-serif; font-weight:600; font-size: 3rem; margin: 10px 0 4px; letter-spacing: 1px;">
-    Day <span id="ft-day">1</span>
+  <div style="font-size: 0.7rem; letter-spacing: 2px; color:#666; margin-bottom: 24px;">
+    DEP: SUN AUG 16 22:20 &nbsp;→&nbsp; ARR: THU AUG 20 17:00
   </div>
 
-  <p style="font-size: 0.85rem; color:#777; margin-bottom: 30px;">
-    Started Sun, Aug 16 &middot; 10:20 PM
-  </p>
-
-  <!-- Elapsed -->
-  <div style="margin-bottom: 34px;">
-    <div style="font-size: 0.8rem; letter-spacing: 2px; color:#777; margin-bottom: 8px;">
+  <!-- TIME WITHOUT FOOD -->
+  <div style="margin-bottom: 30px;">
+    <div style="font-size: 0.7rem; letter-spacing: 3px; color:#888; margin-bottom: 10px;">
       TIME WITHOUT FOOD
     </div>
-    <div id="ft-elapsed" style="font-family:'Outfit', sans-serif; font-weight:600; font-size: 2rem; font-variant-numeric: tabular-nums;">
-      00:00:00:00
-    </div>
-    <div style="font-size: 0.7rem; color:#999; margin-top: 4px;">
-      days : hours : minutes : seconds
+    <div id="fb-elapsed" style="display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap;"></div>
+    <div style="display:flex; justify-content:center; gap: 0; margin-top:6px; font-size:0.6rem; letter-spacing:1px; color:#666;">
+      <span style="width:100px;">DAYS</span><span style="width:100px;">HOURS</span><span style="width:100px;">MINS</span><span style="width:100px;">SECS</span>
     </div>
   </div>
 
-  <div style="border-top: 1px solid #ddd; width: 120px; margin: 0 auto 34px;"></div>
+  <div style="border-top: 1px solid #262626; width: 160px; margin: 0 auto 30px;"></div>
 
-  <!-- Countdown -->
+  <!-- TIME REMAINING -->
   <div style="margin-bottom: 10px;">
-    <div style="font-size: 0.8rem; letter-spacing: 2px; color:#777; margin-bottom: 8px;">
+    <div style="font-size: 0.7rem; letter-spacing: 3px; color:#888; margin-bottom: 10px;">
       TIME REMAINING
     </div>
-    <div id="ft-countdown" style="font-family:'Outfit', sans-serif; font-weight:600; font-size: 2rem; font-variant-numeric: tabular-nums;">
-      00:00:00:00
-    </div>
-    <div style="font-size: 0.7rem; color:#999; margin-top: 4px;">
-      until Thu, Aug 20 &middot; 5:00 PM
+    <div id="fb-countdown" style="display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap;"></div>
+    <div style="display:flex; justify-content:center; gap: 0; margin-top:6px; font-size:0.6rem; letter-spacing:1px; color:#666;">
+      <span style="width:100px;">DAYS</span><span style="width:100px;">HOURS</span><span style="width:100px;">MINS</span><span style="width:100px;">SECS</span>
     </div>
   </div>
 
-  <!-- Progress bar -->
-  <div style="margin-top: 30px;">
-    <div style="width: 100%; max-width: 400px; height: 6px; background: #e5e5e5; margin: 0 auto; border-radius: 3px; overflow: hidden;">
-      <div id="ft-progress-bar" style="height: 100%; width: 0%; background: #333; transition: width 1s linear;"></div>
+  <!-- PROGRESS -->
+  <div style="margin-top: 34px;">
+    <div style="width: 100%; max-width: 420px; height: 6px; background: #262626; margin: 0 auto; border-radius: 3px; overflow: hidden;">
+      <div id="fb-progress-bar" style="height: 100%; width: 0%; background: #f0c419; transition: width 1s linear;"></div>
     </div>
-    <div id="ft-progress-pct" style="font-size: 0.75rem; color:#777; margin-top: 8px;">
-      0% complete
+    <div id="fb-progress-pct" style="font-size: 0.7rem; letter-spacing: 2px; color:#888; margin-top: 8px;">
+      0% COMPLETE
     </div>
   </div>
 
-  <div id="ft-done-msg" style="display:none; margin-top: 24px; font-family:'Outfit', sans-serif; font-weight:600; font-size: 1.2rem;">
-    Fast complete. Well done.
+  <!-- TICKER -->
+  <div id="fb-ticker-wrap" style="
+    margin-top: 26px;
+    background: #161616;
+    border-top: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+  ">
+    <div id="fb-ticker" style="
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: #f0c419;
+      padding-left: 100%;
+      animation: fbTickerScroll 38s linear infinite;
+    "></div>
+  </div>
+
+  <div id="fb-done-msg" style="display:none; margin-top: 24px; font-size: 1rem; letter-spacing:2px; color:#f0c419;">
+    ✈ FAST COMPLETE — NOW BOARDING FOOD
   </div>
 
 </div>
 
+<style>
+  #fast-flipboard .flap-box {
+    position: relative;
+    width: 34px;
+    height: 48px;
+    background: #1c1c1c;
+    border-radius: 3px;
+    perspective: 300px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 2px 3px rgba(0,0,0,.5);
+  }
+  #fast-flipboard .flap-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #f5f5f5;
+    background: linear-gradient(to bottom, #262626 0%, #262626 49.5%, #101010 50.5%, #101010 100%);
+    border-radius: 3px;
+  }
+  #fast-flipboard .flap-face::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 50%;
+    height: 1px;
+    background: #000;
+    transform: translateY(-0.5px);
+  }
+  #fast-flipboard .flap-box.flipping .flap-face {
+    animation: fastFlip 0.32s cubic-bezier(.45,0,.55,1);
+  }
+  @keyframes fastFlip {
+    0%   { transform: rotateX(0deg); filter: brightness(1); }
+    48%  { transform: rotateX(-90deg); filter: brightness(0.7); }
+    52%  { transform: rotateX(-90deg); filter: brightness(0.7); }
+    100% { transform: rotateX(0deg); filter: brightness(1); }
+  }
+  #fast-flipboard .flap-colon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    height: 48px;
+    margin: 0 2px;
+  }
+  #fast-flipboard .flap-colon span {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: #444;
+  }
+  #fast-flipboard .flap-group {
+    display: flex;
+    gap: 3px;
+  }
+  @keyframes fbTickerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+</style>
+
 <script>
 (function () {
-  // Fast window — edit these two lines if your times change
-  var FAST_START = new Date("2026-08-16T22:20:00-07:00"); // Sun Aug 16, 10:20 PM (Pacific)
-  var FAST_END   = new Date("2026-08-20T17:00:00-07:00"); // Thu Aug 20, 5:00 PM (Pacific)
-
-  var TOTAL_MS = FAST_END - FAST_START;
+  var FAST_START = new Date("2026-08-16T22:20:00-07:00"); // Sun Aug 16, 10:20 PM Pacific
+  var FAST_END   = new Date("2026-08-20T17:00:00-07:00"); // Thu Aug 20, 5:00 PM Pacific
+  var TOTAL_MS   = FAST_END - FAST_START;
 
   function pad(n) { return String(n).padStart(2, "0"); }
 
-  function breakdown(ms) {
+  function breakdownParts(ms) {
     if (ms < 0) ms = 0;
     var totalSeconds = Math.floor(ms / 1000);
-    var days = Math.floor(totalSeconds / 86400);
-    var hours = Math.floor((totalSeconds % 86400) / 3600);
-    var minutes = Math.floor((totalSeconds % 3600) / 60);
-    var seconds = totalSeconds % 60;
-    return pad(days) + ":" + pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+    return {
+      d: pad(Math.floor(totalSeconds / 86400)),
+      h: pad(Math.floor((totalSeconds % 86400) / 3600)),
+      m: pad(Math.floor((totalSeconds % 3600) / 60)),
+      s: pad(totalSeconds % 60)
+    };
   }
+
+  // Build the flap board DOM for a container: 4 groups of 2 digits, colon-separated
+  function buildBoard(container) {
+    var groups = ["d", "h", "m", "s"];
+    groups.forEach(function (g, gi) {
+      var group = document.createElement("div");
+      group.className = "flap-group";
+      for (var i = 0; i < 2; i++) {
+        var box = document.createElement("div");
+        box.className = "flap-box";
+        box.id = container.id + "-" + g + i;
+        box.dataset.v = "";
+        var face = document.createElement("div");
+        face.className = "flap-face";
+        face.textContent = "0";
+        box.appendChild(face);
+        group.appendChild(box);
+      }
+      container.appendChild(group);
+      if (gi < groups.length - 1) {
+        var colon = document.createElement("div");
+        colon.className = "flap-colon";
+        colon.innerHTML = "<span></span><span></span>";
+        container.appendChild(colon);
+      }
+    });
+  }
+
+  function setFlap(id, newDigit) {
+    var box = document.getElementById(id);
+    if (!box) return;
+    if (box.dataset.v === newDigit) return;
+    var firstRun = box.dataset.v === "";
+    box.dataset.v = newDigit;
+    var face = box.querySelector(".flap-face");
+    if (firstRun) {
+      face.textContent = newDigit;
+      return;
+    }
+    box.classList.add("flipping");
+    setTimeout(function () { face.textContent = newDigit; }, 150);
+    setTimeout(function () { box.classList.remove("flipping"); }, 320);
+  }
+
+  function updateBoard(containerId, parts) {
+    setFlap(containerId + "-d0", parts.d[0]);
+    setFlap(containerId + "-d1", parts.d[1]);
+    setFlap(containerId + "-h0", parts.h[0]);
+    setFlap(containerId + "-h1", parts.h[1]);
+    setFlap(containerId + "-m0", parts.m[0]);
+    setFlap(containerId + "-m1", parts.m[1]);
+    setFlap(containerId + "-s0", parts.s[0]);
+    setFlap(containerId + "-s1", parts.s[1]);
+  }
+
+  var elapsedEl = document.getElementById("fb-elapsed");
+  var countdownEl = document.getElementById("fb-countdown");
+  buildBoard(elapsedEl);
+  buildBoard(countdownEl);
+
+  var QUOTES = [
+    "YOUR STOMACH FILED A MISSING PERSONS REPORT",
+    "FLIGHT TO SNACKVILLE — DELAYED INDEFINITELY",
+    "WILLPOWER: BOARDING NOW AT GATE 1",
+    "HUNGER IS JUST YOUR BODY ASKING FOR DIRECTIONS TO THE FRIDGE — DENIED",
+    "COOKIES DEPARTED SUNDAY 10:20 PM — NO RETURN FLIGHT SCHEDULED",
+    "YOU ARE NOW CRUISING AT AN ALTITUDE OF PURE DISCIPLINE",
+    "PLEASE REMAIN SEATED, THE CRAVINGS MAY BE ROUGH",
+    "THIS ANNOUNCEMENT BROUGHT TO YOU BY YOUR FUTURE, PROUD SELF",
+    "BAGGAGE CLAIM: ALL EXCUSES LEFT AT SECURITY",
+    "IN CASE OF HUNGER, OXYGEN MASKS WILL NOT HELP — KEEP GOING",
+    "ESTIMATED ARRIVAL: THURSDAY, 5:00 PM, VICTORIOUS",
+    "TRAY TABLES UP, THERE IS NO FOOD SERVICE ON THIS FLIGHT",
+    "STRENGTH IS BOARDING THROUGH ALL ROWS",
+    "YOU HAVEN'T MISSED A MEAL, YOU'VE UPGRADED TO WILLPOWER CLASS"
+  ];
+
+  document.getElementById("fb-ticker").textContent = QUOTES.join("      •      ");
 
   function tick() {
     var now = new Date();
-
     var elapsedMs = now - FAST_START;
     var remainingMs = FAST_END - now;
 
-    document.getElementById("ft-elapsed").textContent = breakdown(elapsedMs);
-    document.getElementById("ft-day").textContent = Math.max(1, Math.floor(elapsedMs / 86400000) + 1);
+    updateBoard("fb-elapsed", breakdownParts(elapsedMs));
 
     if (remainingMs <= 0) {
-      document.getElementById("ft-countdown").textContent = "00:00:00:00";
-      document.getElementById("ft-progress-bar").style.width = "100%";
-      document.getElementById("ft-progress-pct").textContent = "100% complete";
-      document.getElementById("ft-done-msg").style.display = "block";
+      updateBoard("fb-countdown", { d: "00", h: "00", m: "00", s: "00" });
+      document.getElementById("fb-progress-bar").style.width = "100%";
+      document.getElementById("fb-progress-pct").textContent = "100% COMPLETE";
+      document.getElementById("fb-done-msg").style.display = "block";
       return;
     }
-
-    document.getElementById("ft-countdown").textContent = breakdown(remainingMs);
+    updateBoard("fb-countdown", breakdownParts(remainingMs));
 
     var pct = Math.min(100, Math.max(0, (elapsedMs / TOTAL_MS) * 100));
-    document.getElementById("ft-progress-bar").style.width = pct.toFixed(1) + "%";
-    document.getElementById("ft-progress-pct").textContent = pct.toFixed(1) + "% complete";
+    document.getElementById("fb-progress-bar").style.width = pct.toFixed(1) + "%";
+    document.getElementById("fb-progress-pct").textContent = pct.toFixed(1) + "% COMPLETE";
   }
 
   tick();
