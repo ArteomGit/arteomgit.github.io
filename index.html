@@ -122,71 +122,76 @@
       setTimeout(type, 2000);
     });
   </script>
-  <!-- ============================================================
-     FAST TRACKER WIDGET — drop this block anywhere in your page body
-     Matches the Arteom S. site: monospace type, off-white bg, black
-     text, thin underline accents.
+ <!-- ============================================================
+     FAST TRACKER WIDGET — drop this block right before </body>
+     Uses the same fonts/colors as arteoms.com:
+       - Outfit (headline)
+       - Roboto Mono (body/numbers)
+       - #f9f9f9 bg / #333 text
+     Make sure this line is already in your <head> (it already is
+     on your site, so no change needed there):
+       <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet"/>
      ============================================================ -->
 <div id="fast-tracker" style="
-  font-family: 'Courier New', Courier, monospace;
-  color: #1a1a1a;
+  font-family: 'Roboto Mono', monospace;
+  color: #333;
   max-width: 640px;
   margin: 60px auto;
   padding: 0 20px;
   text-align: center;
 ">
 
-  <div style="font-size: 14px; letter-spacing: 2px; margin-bottom: 6px; color:#555;">
+  <div style="font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 6px; color:#777;">
     FASTING TRACKER
   </div>
 
-  <div style="font-size: 42px; font-weight: bold; margin: 10px 0 4px; letter-spacing: 1px;">
+  <div style="font-family:'Outfit', sans-serif; font-weight:600; font-size: 3rem; margin: 10px 0 4px; letter-spacing: 1px;">
     Day <span id="ft-day">1</span>
   </div>
 
-  <div style="font-size: 14px; color:#555; margin-bottom: 30px;">
-    Started Sun, Aug 16 · 10:20 PM
-  </div>
+  <p style="font-size: 0.85rem; color:#777; margin-bottom: 30px;">
+    Started Sun, Aug 16 &middot; 10:20 PM
+  </p>
 
   <!-- Elapsed -->
   <div style="margin-bottom: 34px;">
-    <div style="font-size: 13px; letter-spacing: 2px; color:#555; margin-bottom: 8px;">
+    <div style="font-size: 0.8rem; letter-spacing: 2px; color:#777; margin-bottom: 8px;">
       TIME WITHOUT FOOD
     </div>
-    <div id="ft-elapsed" style="font-size: 30px; font-weight: bold; font-variant-numeric: tabular-nums;">
+    <div id="ft-elapsed" style="font-family:'Outfit', sans-serif; font-weight:600; font-size: 2rem; font-variant-numeric: tabular-nums;">
       00:00:00:00
     </div>
-    <div style="font-size: 11px; color:#888; margin-top: 4px;">
+    <div style="font-size: 0.7rem; color:#999; margin-top: 4px;">
       days : hours : minutes : seconds
     </div>
   </div>
 
-  <div style="border-top: 1px solid #ccc; width: 120px; margin: 0 auto 34px;"></div>
+  <div style="border-top: 1px solid #ddd; width: 120px; margin: 0 auto 34px;"></div>
 
   <!-- Countdown -->
   <div style="margin-bottom: 10px;">
-    <div style="font-size: 13px; letter-spacing: 2px; color:#555; margin-bottom: 8px;">
+    <div style="font-size: 0.8rem; letter-spacing: 2px; color:#777; margin-bottom: 8px;">
       TIME REMAINING
     </div>
-    <div id="ft-countdown" style="font-size: 30px; font-weight: bold; font-variant-numeric: tabular-nums;">
+    <div id="ft-countdown" style="font-family:'Outfit', sans-serif; font-weight:600; font-size: 2rem; font-variant-numeric: tabular-nums;">
       00:00:00:00
     </div>
-    <div style="font-size: 11px; color:#888; margin-top: 4px;">
-      until Thu, Aug 20 · 5:00 PM
+    <div style="font-size: 0.7rem; color:#999; margin-top: 4px;">
+      until Thu, Aug 20 &middot; 5:00 PM
     </div>
   </div>
 
   <!-- Progress bar -->
   <div style="margin-top: 30px;">
-    <div style="width: 100%; max-width: 400px; height: 6px; background: #e0e0e0; margin: 0 auto; border-radius: 3px; overflow: hidden;">
-      <div id="ft-progress-bar" style="height: 100%; width: 0%; background: #1a1a1a; transition: width 1s linear;"></div>
+    <div style="width: 100%; max-width: 400px; height: 6px; background: #e5e5e5; margin: 0 auto; border-radius: 3px; overflow: hidden;">
+      <div id="ft-progress-bar" style="height: 100%; width: 0%; background: #333; transition: width 1s linear;"></div>
     </div>
-    <div id="ft-progress-pct" style="font-size: 12px; color:#555; margin-top: 8px;">
+    <div id="ft-progress-pct" style="font-size: 0.75rem; color:#777; margin-top: 8px;">
       0% complete
     </div>
   </div>
 
-  <div id="ft-done-msg" style="display:none; margin-top: 24px; font-size: 18px; font-weight: bold;">
+  <div id="ft-done-msg" style="display:none; margin-top: 24px; font-family:'Outfit', sans-serif; font-weight:600; font-size: 1.2rem;">
     Fast complete. Well done.
   </div>
 
